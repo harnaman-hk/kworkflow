@@ -522,6 +522,12 @@ function kernel_install_local_Test
   output=$(kernel_install "1" "test" "TEST_MODE" "2")
   compare_command_sequence expected_cmd[@] "$output" "$LINENO"
 
+  ID=2
+  # export -f kernel_install
+  output=$(kernel_install "1" "test" "TEST_MODE" "2")
+  ret="$?"
+  assertEquals "($ID)" "$ret" "1"
+
   cd "$original"
 }
 

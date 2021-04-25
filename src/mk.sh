@@ -299,6 +299,12 @@ function kernel_install
       return "$?"
     ;;
     2) # LOCAL_TARGET
+
+      if [[ $(id -u) == 0 ]]; then
+        complain "kw deploy --local should not be run as root"
+        exit 1
+      fi
+      
       local distro=$(detect_distro "/")
 
       if [[ "$distro" =~ "none" ]]; then
