@@ -312,6 +312,7 @@ function kernel_install
         exit 1 # EPERM
       fi
 
+      . "$KW_PLUGINS_DIR/kernel_install/utils.sh" --source-only
       . "$KW_PLUGINS_DIR/kernel_install/$distro.sh" --source-only
       install_kernel "$name" "$distro" "$kernel_img_name" "$reboot" "$arch_target" 'local' "$flag"
       return "$?"
